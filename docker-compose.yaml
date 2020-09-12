@@ -7,7 +7,7 @@ services:
       - "443:443"
     restart: always
     environment:
-      DOMAINS: "gcp.kyuki3rain.com -> http://web"
+      DOMAINS: "gcp.kyuki3rain.com -> http://web:8000"
       STAGE: "production"
       # FORCE_RENEW: "true"
 
