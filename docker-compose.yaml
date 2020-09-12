@@ -1,5 +1,16 @@
 version: "3"
 services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    environment:
+      DOMAINS: "gcp.kyuki3rain.com -> http://web"
+      STAGE: "production"
+      # FORCE_RENEW: "true"
+
   web:
     build:
       context: ./docker/construct_web
@@ -7,8 +18,7 @@ services:
     image: nn-web # docker image name
     container_name: nn-web # docker container name
     ports:
-      - 80:80
-      - 443:443
+      - 8000:8000
 
   nextjs:
     build:
@@ -20,14 +30,3 @@ services:
     volumes: # mount workdir
       - ./app:/src
     command: sh -c "npm install && yarn dev"
-
-  https-portal:
-    image: steveltn/https-portal:1
-    ports:
-      - "80:80"
-      - "443:443"
-    restart: always
-    environment:
-      DOMAINS: "gcp.kyuki3rain.com -> http://nextjs"
-      # STAGE: "production"
-      FORCE_RENEW: "true"
