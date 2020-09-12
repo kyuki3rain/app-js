@@ -1,0 +1,21 @@
+version: "3"
+services:
+  web:
+    build:
+      context: ./docker/construct_web
+      dockerfile: Dockerfile-web
+    image: nn-web # docker image name
+    container_name: nn-web # docker container name
+    ports:
+      - 80:80
+
+  nextjs:
+    build:
+      context: ./docker/construct_app
+      dockerfile: Dockerfile-app
+    container_name: n-app
+    ports:
+      - 3000:3000
+    volumes: # mount workdir
+      - ./app:/src
+    command: sh -c "npm install && yarn dev"
