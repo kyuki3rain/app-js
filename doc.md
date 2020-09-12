@@ -33,3 +33,7 @@ https://genzouw.com/entry/2020/01/28/120014/1910/#toc_id_4
 # nextjs
 
 https://page.ak2ie.net/2019/06/17/nextjs-bootstrap/
+
+# https
+
+https://qiita.com/kuboon/items/f424b84c718619460c6f

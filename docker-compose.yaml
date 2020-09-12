@@ -8,6 +8,7 @@ services:
     container_name: nn-web # docker container name
     ports:
       - 80:80
+      - 443:443
 
   nextjs:
     build:
@@ -19,3 +20,14 @@ services:
     volumes: # mount workdir
       - ./app:/src
     command: sh -c "npm install && yarn dev"
+
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    environment:
+      DOMAINS: "gcp.kyuki3rain.com -> http://nextjs"
+      # STAGE: "production"
+      FORCE_RENEW: "true"
