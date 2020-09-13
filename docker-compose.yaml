@@ -5,10 +5,10 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      environment:
-        DOMAINS: "gcp.kyuki3rain.com -> http://web:3000"
-        STAGE: "production"
-        # FORCE_RENEW: "true"
+    environment:
+      DOMAINS: "gcp.kyuki3rain.com -> http://web:3000"
+      STAGE: "production"
+      # FORCE_RENEW: "true"
 
   web:
     build:
