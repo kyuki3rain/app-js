@@ -1,23 +1,14 @@
 version: "3"
 services:
-  https-portal:
-    image: steveltn/https-portal:1
-    ports:
-      - "80:80"
-      - "443:443"
+  mongo:
+    image: mongo
     environment:
-      DOMAINS: "gcp.kyuki3rain.com -> http://web:8000"
-      STAGE: "production"
-      # FORCE_RENEW: "true"
-
-  web:
-    build:
-      context: ./docker/construct_web
-      dockerfile: Dockerfile-web
-    image: nn-web # docker image name
-    container_name: nn-web # docker container name
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example2
     ports:
-      - 8000:8000
+      - 27017:27017
+    volumes:
+      - mongodata:/data/db
 
   nextjs:
     build:
@@ -32,15 +23,24 @@ services:
     environment:
       CHOKIDAR_USEPOLLING: "true"
 
-  mongo:
-    image: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example2
+  web:
+    build:
+      context: ./docker/construct_web
+      dockerfile: Dockerfile-web
+    image: nn-web # docker image name
+    container_name: nn-web # docker container name
     ports:
-      - 27017:27017
-    volumes:
-      - mongodata:/data/db
+      - 8000:8000
+
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAINS: "gcp.kyuki3rain.com -> http://web:8000"
+      STAGE: "production"
+      # FORCE_RENEW: "true"
 
   mongo-express:
     image: mongo-express
