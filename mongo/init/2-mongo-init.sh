@@ -1,0 +1,1 @@
+# mongoimport --db test --collection account --drop --file /docker-entrypoint-initdb.d/account.json --jsonArray

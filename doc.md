@@ -37,3 +37,7 @@ https://page.ak2ie.net/2019/06/17/nextjs-bootstrap/
 # https
 
 https://qiita.com/kuboon/items/f424b84c718619460c6f
+
+# dns error
+
+https://stackoverflow.com/questions/51541561/module-not-found-cant-resolve-dns-in-pg-lib/51781959

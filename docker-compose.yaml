@@ -5,11 +5,10 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    restart: always
-    environment:
-      DOMAINS: "gcp.kyuki3rain.com -> http://web:8000"
-      STAGE: "production"
-      # FORCE_RENEW: "true"
+      environment:
+        DOMAINS: "gcp.kyuki3rain.com -> http://web:3000"
+        STAGE: "production"
+        # FORCE_RENEW: "true"
 
   web:
     build:
@@ -30,3 +29,31 @@ services:
     volumes: # mount workdir
       - ./app:/src
     command: sh -c "npm install && yarn dev"
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example2
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodata:/data/db
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: password
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example2
+    depends_on:
+      - mongo
+
+volumes:
+  mongodata:

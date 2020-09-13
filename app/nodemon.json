@@ -1,5 +1,5 @@
 {
-  "watch": ["pages", "test", "public", "server"],
-  "ext": "ts, tsx",
-  "exec": "node ./server/index.js"
+  "watch": ["./server"],
+  "ext": "ts",
+  "exec": "ts-node ./server/index.ts"
 }

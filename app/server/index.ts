@@ -1,5 +1,6 @@
-const next = require('next')
-const express = require('express')
+import next from 'next'
+import express from 'express'
+
 const port = parseInt(process.env.PORT || '3000', 10)
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -11,6 +12,9 @@ app
     const server = express()
 
     server.get('*', (req, res) => {
+      return handle(req, res)
+    })
+    server.post('*', (req, res) => {
       return handle(req, res)
     })
 
