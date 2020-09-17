@@ -4,20 +4,20 @@ import { Account } from '../../../type'
 
 const create = async (req: NextApiRequest & Database, res) => {
   const collection = await req.db.collection<Account>('accounts')
-  const account = collection
-    .findOne({
-      name: req.body.account.name,
-    })
-    .then((result) => {
-      res.json(result)
-    })
-    .catch(async () => {
-      const insert = await collection.insertOne(req.body.account, {
-        forceServerObjectId: false,
-      })
+  const account = await collection.findOne({
+    name: req.body.account.name,
+  })
 
-      res.json(insert.ops[0])
+  if (account == null) {
+    const insert = await collection.insertOne(req.body.account, {
+      forceServerObjectId: false,
     })
+
+    res.json(insert.ops[0])
+    return
+  }
+
+  res.json(account)
 }
 
 export default withDatabase(create)

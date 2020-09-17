@@ -6,7 +6,6 @@ import * as MongoDB from 'mongodb'
 import axios from 'axios'
 
 const Instance = axios.create({
-  baseURL: `http://localhost:8000`,
   headers: { 'Content-Type': 'application/json' },
   responseType: 'json',
 })
@@ -21,7 +20,7 @@ const makeDeposit = (
     amount,
     paidAt: Date.now(),
   }
-  Instance.post('api/deposit/create', {
+  Instance.post('/api/deposit/create', {
     deposit,
   }).then((res) => {
     setRedirect(true)
@@ -31,7 +30,7 @@ const makeDeposit = (
 const createAccount = (
   setAccount: (account: MongoDB.WithId<Account>) => void
 ) => {
-  Instance.post('api/account/create', {
+  Instance.post('/api/account/create', {
     account: { name: 'テスト' },
   }).then((res) => {
     setAccount(res.data)
@@ -45,7 +44,7 @@ export const Home = (): JSX.Element => {
 
   useEffect(() => {
     if (redirect) {
-      Instance.get('api/deposit/amount').then((res) => {
+      Instance.get('/api/deposit/amount').then((res) => {
         setAmount(res.data.amount)
         setRedirect(false)
       })
