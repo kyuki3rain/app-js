@@ -71,3 +71,17 @@ gcloud compute instances add-metadata EXAMPLE_INSTANCE \
  start <インスタンス名> --project <プロジェクト名> --zone <ゾーン名>
 
  gcloud compute instances add-metadata app-js --metadata-from-file startup-script=start_script.sh
+
+
+# nannkasugoi OS
+ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:/code/" -w="/code/" docker/compose:alpine-1.27.3 -f docker-compose-pro.yaml up -d
+
+git clone https://github.com/kyuki3rain/app-js.git
+sudo apt-get update
+sudo apt update
+sudo apt-get install git
+sudo apt-get install docker.io
+sudo apt install docker-compose
+sudo usermod -aG docker $USER
+sudo chmod +x /usr/bin/docker-compose
+exit

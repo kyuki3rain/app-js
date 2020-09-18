@@ -10,7 +10,6 @@ const api = async (req: NextApiRequest & Database, res) => {
   let amount = 0
   deposits.forEach((deposit) => {
     amount += deposit.amount
-    console.log(amount)
   })
 
   res.json({ amount })
