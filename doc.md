@@ -85,3 +85,8 @@ sudo apt install docker-compose
 sudo usermod -aG docker $USER
 sudo chmod +x /usr/bin/docker-compose
 exit
+
+
+# nextjs expo 
+
+https://docs.expo.io/guides/using-nextjs/

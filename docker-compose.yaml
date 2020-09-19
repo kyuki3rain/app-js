@@ -19,8 +19,8 @@ services:
     ports:
       - 3000:3000
     volumes: # mount workdir
-      - ./prev_app:/src
-    command: sh -c "npm install && yarn dev"
+      - ./app:/src
+    command: sh -c "npm install && npm run dev"
     environment:
       CHOKIDAR_USEPOLLING: "true"
 
