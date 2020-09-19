@@ -13,7 +13,7 @@ import {
 export const Header = (): JSX.Element => (
   <Navbar bg="dark" variant="dark" expand="lg">
     <Container>
-      <Navbar.Brand href="/">Common Budgets</Navbar.Brand>
+      <Navbar.Brand href="/">雪うさぎのもちづき</Navbar.Brand>
       <Nav className="justify-content-end">
         <Nav.Link>menu</Nav.Link>
         <Nav.Link>menu</Nav.Link>
