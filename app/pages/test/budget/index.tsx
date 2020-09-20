@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { Button, Container, Jumbotron } from "react-bootstrap";
-import { Header, Footer } from "../../components";
+import { Header, Footer } from "../../../components";
 import * as MongoDB from "mongodb";
 import axios from "axios";
 
