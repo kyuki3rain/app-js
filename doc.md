@@ -10,23 +10,19 @@ vscode で書きたいのは決まっていたので調べてみると、なん�
 
 # Next.js + TypeScript + Express (+ docker + mongodb)
 
-# day1 docker + nodejs + nginxでdockerを学ぶ
+# day1 docker + nodejs + nginx で docker を学ぶ
 
 https://qiita.com/ryo-ohnishi/items/3653f7583c8591eef333
 
-
-# day2 nextjs + typescript + express + jest環境を構築
+# day2 nextjs + typescript + express + jest 環境を構築
 
 https://serip39.hatenablog.com/entry/2020/06/20/234000
 
 # day3 mongodb + mongoExpress でデータベース構築
 
+# day4 nodemon + ts-node で node 拡張、app と db の合体
 
-# day4 nodemon + ts-nodeでnode拡張、appとdbの合体
-
-
-# day5 https-portalとサーバー構築
-
+# day5 https-portal とサーバー構築
 
 ```
 app.use(express.json());
@@ -39,6 +35,7 @@ https://qiita.com/anoonoll/items/050ebb62143ada022a32
 docker-compose up --build
 
 # nodemon
+
 https://qiita.com/twipg/items/cb969b335d66c4aee690
 https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199
 
@@ -56,37 +53,36 @@ https://qiita.com/kuboon/items/f424b84c718619460c6f
 
 https://stackoverflow.com/questions/51541561/module-not-found-cant-resolve-dns-in-pg-lib/51781959
 
-
 # graphql
+
 https://dev.classmethod.jp/articles/graphql-tutorial-nodejsexpress/
 
-
 # gcloud
-gcloud compute instances create app-js n1-standard-1  --metadata-from-file startup-script=start_script.sh
+
+gcloud compute instances create app-js n1-standard-1 --metadata-from-file startup-script=start_script.sh
 
 gcloud compute instances add-metadata EXAMPLE_INSTANCE \
-  --metadata-from-file startup-script=PATH_TO_FILE
+ --metadata-from-file startup-script=PATH_TO_FILE
 
-* * * * * /usr/bin/gcloud --account=<作成した> compute instances
- start <インスタンス名> --project <プロジェクト名> --zone <ゾーン名>
+- - - - - /usr/bin/gcloud --account=<作成した> compute instances
+          start <インスタンス名> --project <プロジェクト名> --zone <ゾーン名>
 
- gcloud compute instances add-metadata app-js --metadata-from-file startup-script=start_script.sh
-
+gcloud compute instances add-metadata app-js --metadata-from-file startup-script=start_script.sh
 
 # nannkasugoi OS
- docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:/code/" -w="/code/" docker/compose:alpine-1.27.3 -f docker-compose-pro.yaml up -d
 
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v "\$PWD:/code/" -w="/code/" docker/compose:alpine-1.27.3 -f docker-compose-pro.yaml up -d
+
+sudo apt-get install git
 git clone https://github.com/kyuki3rain/app-js.git
 sudo apt-get update
 sudo apt update
-sudo apt-get install git
 sudo apt-get install docker.io
 sudo apt install docker-compose
-sudo usermod -aG docker $USER
+sudo usermod -aG docker \$USER
 sudo chmod +x /usr/bin/docker-compose
 exit
 
-
-# nextjs expo 
+# nextjs expo
 
 https://docs.expo.io/guides/using-nextjs/

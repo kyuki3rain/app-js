@@ -19,7 +19,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./prev_app:/src
+      - ./app:/src
     command: sh -c "npm install && npm start"
     environment:
       CHOKIDAR_USEPOLLING: "true"

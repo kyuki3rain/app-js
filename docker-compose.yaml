@@ -11,6 +11,15 @@ services:
       - mongodata:/data/db
       - ./mongo/init:/docker-entrypoint-initdb.d/
 
+  web:
+    build:
+      context: ./docker/construct_web
+      dockerfile: Dockerfile-web
+    image: nn-web # docker image name
+    container_name: nn-web # docker container name
+    ports:
+      - 8000:8000
+
   nextjs:
     build:
       context: ./docker/construct_app
