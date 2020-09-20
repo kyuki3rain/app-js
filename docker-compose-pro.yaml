@@ -18,11 +18,20 @@ services:
     container_name: n-app
     ports:
       - 3000:3000
-    volumes: # mount workdir
+    volumes:
       - ./prev_app:/src
-    command: sh -c "npm install && yarn dev"
+    command: sh -c "npm install && npm start"
     environment:
       CHOKIDAR_USEPOLLING: "true"
+
+  web:
+    build:
+      context: ./docker/construct_web
+      dockerfile: Dockerfile-web
+    image: nn-web # docker image name
+    container_name: nn-web # docker container name
+    ports:
+      - 8000:8000
 
   https-portal:
     image: steveltn/https-portal:1
@@ -30,23 +39,9 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      DOMAINS: "gcp.kyuki3rain.com -> http://nextjs:3000"
+      DOMAINS: "kyuki3rain.com -> http://web:8000"
       STAGE: "production"
       # FORCE_RENEW: "true"
-
-
-  # mongo-express:
-  #   image: mongo-express
-  #   ports:
-  #     - 8081:8081
-  #   environment:
-  #     ME_CONFIG_BASICAUTH_USERNAME: admin
-  #     ME_CONFIG_BASICAUTH_PASSWORD: password
-  #     ME_CONFIG_MONGODB_PORT: 27017
-  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
-  #     ME_CONFIG_MONGODB_ADMINPASSWORD: example2
-  #   depends_on:
-  #     - mongo
 
 volumes:
   mongodata:
