@@ -73,6 +73,8 @@ gcloud compute instances add-metadata app-js --metadata-from-file startup-script
 
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v "\$PWD:/code/" -w="/code/" docker/compose:alpine-1.27.3 -f docker-compose-pro.yaml up -d
 
+# サーバーセットアップ
+
 sudo apt-get install git
 git clone https://github.com/kyuki3rain/app-js.git
 sudo apt-get update

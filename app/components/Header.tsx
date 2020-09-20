@@ -1,5 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import React from 'react'
+import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
 import {
   Container,
   Navbar,
@@ -8,12 +8,12 @@ import {
   FormControl,
   Form,
   Button,
-} from 'react-bootstrap'
+} from "react-bootstrap";
 
 export const Header = (): JSX.Element => (
   <Navbar bg="dark" variant="dark" expand="lg">
     <Container>
-      <Navbar.Brand href="/">雪うさぎのもちづき</Navbar.Brand>
+      <Navbar.Brand href="/">雪うさぎの餅つき</Navbar.Brand>
       <Nav className="justify-content-end">
         <Nav.Link>menu</Nav.Link>
         <Nav.Link>menu</Nav.Link>
@@ -21,6 +21,6 @@ export const Header = (): JSX.Element => (
       </Nav>
     </Container>
   </Navbar>
-)
+);
 
-export default Header
+export default Header;

@@ -1,14 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { useEffect, useState } from 'react'
-import { Button, Container, Jumbotron } from 'react-bootstrap'
-import { Header, Footer } from '../components'
-import * as MongoDB from 'mongodb'
-import axios from 'axios'
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect, useState } from "react";
+import { Button, Container, Jumbotron } from "react-bootstrap";
+import { Header, Footer } from "../../components";
+import * as MongoDB from "mongodb";
+import axios from "axios";
 
 const Instance = axios.create({
-  headers: { 'Content-Type': 'application/json' },
-  responseType: 'json',
-})
+  headers: { "Content-Type": "application/json" },
+  responseType: "json",
+});
 
 const makeDeposit = (
   account: MongoDB.WithId<Account>,
@@ -19,37 +19,37 @@ const makeDeposit = (
     accountId: account._id,
     amount,
     paidAt: Date.now(),
-  }
-  Instance.post('/api/deposit/create', {
+  };
+  Instance.post("/api/deposit/create", {
     deposit,
   }).then((res) => {
-    setRedirect(true)
-  })
-}
+    setRedirect(true);
+  });
+};
 
 const createAccount = (
   setAccount: (account: MongoDB.WithId<Account>) => void
 ) => {
-  Instance.post('/api/account/create', {
-    account: { name: 'テスト' },
+  Instance.post("/api/account/create", {
+    account: { name: "テスト" },
   }).then((res) => {
-    setAccount(res.data)
-  })
-}
+    setAccount(res.data);
+  });
+};
 
-export const Home = (): JSX.Element => {
-  const [amount, setAmount] = useState<number>(0)
-  const [redirect, setRedirect] = useState<boolean>(true)
-  const [account, setAccount] = useState<MongoDB.WithId<Account>>()
+const Budget = (): JSX.Element => {
+  const [amount, setAmount] = useState<number>(0);
+  const [redirect, setRedirect] = useState<boolean>(true);
+  const [account, setAccount] = useState<MongoDB.WithId<Account>>();
 
   useEffect(() => {
     if (redirect) {
-      Instance.get('/api/deposit/amount').then((res) => {
-        setAmount(res.data.amount)
-        setRedirect(false)
-      })
+      Instance.get("/api/deposit/amount").then((res) => {
+        setAmount(res.data.amount);
+        setRedirect(false);
+      });
     }
-  }, [redirect])
+  }, [redirect]);
 
   return (
     <div>
@@ -70,7 +70,7 @@ export const Home = (): JSX.Element => {
             <Button
               className="btn-secondary my-2"
               onClick={() => {
-                createAccount(setAccount)
+                createAccount(setAccount);
               }}
             >
               登録
@@ -80,7 +80,7 @@ export const Home = (): JSX.Element => {
       </Jumbotron>
       <Footer></Footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Budget;
