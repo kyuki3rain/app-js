@@ -20,7 +20,7 @@ const makeDeposit = (
     amount,
     paidAt: Date.now(),
   };
-  Instance.post("/api/deposit/create", {
+  Instance.post("/api/test/budget/deposit/create", {
     deposit,
   }).then((res) => {
     setRedirect(true);
@@ -44,7 +44,7 @@ const Budget = (): JSX.Element => {
 
   useEffect(() => {
     if (redirect) {
-      Instance.get("/api/deposit/amount").then((res) => {
+      Instance.get("/api/test/budget/deposit/amount").then((res) => {
         setAmount(res.data.amount);
         setRedirect(false);
       });
