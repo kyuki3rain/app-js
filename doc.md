@@ -88,3 +88,13 @@ exit
 # nextjs expo
 
 https://docs.expo.io/guides/using-nextjs/
+
+# エラー
+
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
+https://marginalia.hatenablog.com/entry/2019/07/03/133854
+
+# mongodb + typescript
+
+http://mongodb.github.io/node-mongodb-native/3.6/api/
+https://docs.mongodb.com/manual/tutorial/update-documents/

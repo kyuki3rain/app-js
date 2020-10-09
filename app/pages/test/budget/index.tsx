@@ -30,7 +30,7 @@ const makeDeposit = (
 const createAccount = (
   setAccount: (account: MongoDB.WithId<Account>) => void
 ) => {
-  Instance.post("/api/account/create", {
+  Instance.post("/api/test/budget/account/create", {
     account: { name: "テスト" },
   }).then((res) => {
     setAccount(res.data);
